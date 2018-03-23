@@ -1,24 +1,35 @@
-# README
+# Jobstatus
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Jobstatus is a web application for monitoring the status of cron jobs for UVa Digital Library projects. 
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+* Ruby-2.5.0
 
-* System dependencies
+* Rails 5.1.5
 
-* Configuration
+* MySQL 5.0 +
 
-* Database creation
+## Installation
 
-* Database initialization
+* Install MySQL `gem install mysql2`
 
-* How to run the test suite
+* Make sure Gemfile includes `gem 'mysql2'`
 
-* Services (job queues, cache servers, search engines, etc.)
+* Copy the `config/database.yml.example`, change the host, username and password of your system and save it to `config/database.yml` 
 
-* Deployment instructions
+* run `bundle install`
 
-* ...
+* run `rake db:create`
+
+* run `rake db:migrate`
+
+## Run the application 
+
+* run `rails s`
+
+* Go to [http://localhost:3000/](http://localhost:3000/)to see the page
+
+## Test
+
+* Curl command
