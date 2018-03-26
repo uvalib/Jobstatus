@@ -33,4 +33,4 @@ Jobstatus is a web application for monitoring the status of cron jobs for UVa Di
 ## Test
 
 * Test curl command: 
- `curl -vv -XPOST -H "Content-Type:application/json" 'http://localhost:3000/jobs' -d '{"name":"fedora 4 backup", "status":"success", "duration":"1093", "message":"completed backup and restore"}' -H"Accept:application/json" -o output.html`
+ `curl -H "Content-Type:application/json" 'http://localhost:3000/jobs' -d '{"name":"fedora 4 backup", "status":"success", "duration":"1093", "message":"completed backup and restore"}' -H"Accept:application/json"`
