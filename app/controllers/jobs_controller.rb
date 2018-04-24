@@ -2,16 +2,21 @@ class JobsController < ApplicationController
   # Add skip_before_action to turn off CSRF, should remove this when we introduce the authentication part in the application
   skip_before_action :verify_authenticity_token
   before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:group]
 
   # GET /jobs
   # GET /jobs.json
   def index
     @jobs = Job.all
+    @groups = Job.all.group(:name)
   end
 
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+  end
+
+  def group
   end
 
   # GET /jobs/new
@@ -65,6 +70,10 @@ class JobsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_job
       @job = Job.find(params[:id])
+    end
+
+    def set_group
+      @group_jobs = Job.where("name= ?", params[:name])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
