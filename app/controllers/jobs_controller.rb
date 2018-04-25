@@ -73,7 +73,7 @@ class JobsController < ApplicationController
     end
 
     def set_group
-      @group_jobs = Job.where("name= ?", params[:name])
+      @group_jobs = Job.where("name= ?", params[:name]).order(params[:create_at]).reverse_order
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
