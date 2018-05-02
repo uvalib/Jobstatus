@@ -16,7 +16,7 @@
   <tbody>
 
   <% @group_jobs.each do |job| %>
-      <tr>
+      <tr class="<%=job.status=='success' ? 'all_success' : 'not_success' %> ">
         <td><%= job.name %></td>
         <td><%= job.status %></td>
         <td><%= job.duration %></td>
