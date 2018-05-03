@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_05_02_143947) do
 
   create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "NO NAME", null: false
     t.string "status"
     t.integer "duration"
     t.text "message"
