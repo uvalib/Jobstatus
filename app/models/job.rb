@@ -5,4 +5,5 @@ class Job < ApplicationRecord
                                    end
    }
    validates :frequency, :numericality => true, :allow_nil => false
+   validates :name, presence: true, allow_blank: false
 end
