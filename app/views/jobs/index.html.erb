@@ -5,19 +5,22 @@
 <table>
   <thead>
   <tr>
+    <th> Status</th>
     <th> Job Name</th>
     <th> Counts </th>
     <th colspan="3"></th>
   </tr>
   </thead>
-
   <tbody>
     <% @groups.count.each do |k,v|%>
-      <tr>
-        <td><%= link_to k, group_jobs_path(name: k) %></a></td>
-        <td><%= v %></td>
-      </tr>
-      <% end %>
+      <% joblist = Job.where("name= ?", k).order("created_at DESC") %>
+      <% job_condition = joblist.first["created_at"] + joblist.first["frequency"]*3600 >= Time.now  && joblist.first["status"] == "success" %>
+          <tr class="<%=job_condition ? 'all_success' : 'not_success' %> ">
+            <td><%= job_condition ? "&#10003;".html_safe : "&#10008;".html_safe  %></td>
+            <td><%= link_to k, group_jobs_path(name: k) %></a></td>
+            <td><%= v %></td>
+          </tr>
+    <% end %>
   </tbody>
 </table>
 
