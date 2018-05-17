@@ -15,6 +15,11 @@
 
   <tbody>
 
+  <% unless @group_jobs.order("created_at DESC").first["created_at"] + @group_jobs.order("created_at DESC").first["frequency"]*3600 >= Time.now %>
+    <p class="not_success"><b><%= @group_jobs.first["name"] %></b> is overdue.</p>
+  <% end %>
+
+
   <% @group_jobs.each do |job| %>
       <tr class="<%=job.status=='success' ? 'all_success' : 'not_success' %> ">
         <td><%= job.name %></td>
