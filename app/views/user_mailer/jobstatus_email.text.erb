@@ -1,5 +1,9 @@
 Job Status Updates
 ===============================================
 
-There is failed job, please check the details here: <%= @url %>
+There is failed job, please check the details here:
+
+<% @url.each do |x|%>
+<%= link_to x, x %>
+<% end %>
 
