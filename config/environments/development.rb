@@ -56,4 +56,7 @@ Rails.application.configure do
   #EMAIL_FROM = 'email_from@example.com'
   #EMAIL_TO = ['rmial_to1@example.com', 'email_to2@example.com']
 
+  #Base url for email link
+  BASE_URL = Rails.env.production? ? "http://jobstatus.lib.virginia.edu" : "http://localhost:3000"
+
 end
