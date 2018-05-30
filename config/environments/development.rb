@@ -48,12 +48,16 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  # Use an evented file watcher to asynchronously detect changes in source code,
+  # Use an evented file watcher to asynchronously detect changes in source code,config/environments/development.rb
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   #EMAIL
   #EMAIL_FROM = 'email_from@example.com'
-  #EMAIL_TO = ['rmial_to1@example.com', 'email_to2@example.com']
+  #EMAIL_TO = ['email_to1@example.com', 'email_to2@example.com']
+
+  #Password for request
+  PASSWD = 'changelater'
 
 end
+

@@ -32,13 +32,23 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
-    respond_to do |format|
-      if @job.save
+    if request.headers["X-Password"] == PASSWD
+      respond_to do |format|
+        if @job.save
           format.html { redirect_to @job, notice: 'Job was successfully created.' }
           format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
+        else
+          format.html { render :new }
+          format.json { render json: @job.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if request.headers["X-Password"].nil?
+          format.json  { render :json => "Please pass password in your request." }
+        else
+          format.json  { render :json => "Password is wrong." }
+        end
       end
     end
   end
