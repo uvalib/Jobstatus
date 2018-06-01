@@ -45,9 +45,9 @@ class JobsController < ApplicationController
     else
       respond_to do |format|
         if request.headers["X-Password"].nil?
-          format.json  { render :json => "Please pass password in your request." }
+          format.json  { render :json => 'Valid requests must include the X-Password header.' }
         else
-          format.json  { render :json => "Password is wrong." }
+          format.json  { render :json => 'Password is wrong. Please provide correct password.' }
         end
       end
     end

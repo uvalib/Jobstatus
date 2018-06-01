@@ -94,7 +94,7 @@ Rails.application.configure do
   #EMAIL_FROM = 'email_from@example.com'
   #EMAIL_TO = ['email_to1@example.com', 'email_to2@example.com']
 
-  #Password for request
-  PASSWD = 'changelater'
+  #Password for sending request from curl command
+  PASSWD = ENV['password']
 
 end
