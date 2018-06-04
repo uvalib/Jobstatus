@@ -32,7 +32,7 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
-    if request.headers["X-Password"] == PASSWD
+    if request.headers["X-Password"] == ENV['password']
       respond_to do |format|
         if @job.save
           format.html { redirect_to @job, notice: 'Job was successfully created.' }
