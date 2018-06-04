@@ -54,6 +54,7 @@ Rails.application.configure do
 
   #EMAIL
   #EMAIL_FROM = 'email_from@example.com'
-  #EMAIL_TO = ['rmial_to1@example.com', 'email_to2@example.com']
+  #EMAIL_TO = ['email_to1@example.com', 'email_to2@example.com']
 
 end
+
