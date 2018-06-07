@@ -8,4 +8,8 @@ Rails.application.routes.draw do
 
   root 'jobs#index'
 
+  # health check and version endpoints
+  resources :healthcheck, only: [ :index ]
+  resources :version, only: [ :index ]
+
 end
