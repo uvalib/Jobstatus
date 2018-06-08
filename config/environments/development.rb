@@ -53,8 +53,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   #EMAIL
-  #EMAIL_FROM = 'email_from@example.com'
-  #EMAIL_TO = ['email_to1@example.com', 'email_to2@example.com']
+  EMAIL_FROM = ENV['SENDER']
+  EMAIL_TO = ENV['RECEIVER']
 
 end
 
