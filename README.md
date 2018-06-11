@@ -30,7 +30,7 @@ Jobstatus is a web application for monitoring the status of cron jobs for UVa Di
 
 * Go to [http://localhost:3000/](http://localhost:3000/)to see the page
 
-* To receive emails for failed or delayed jobs, uncomment lines of EMAIL_FROM and EMAIL_TO in development.rb and production.rb file, add the real email addresses to both fields. Set cron job and run following command:
+* To receive emails for failed or delayed jobs, pass email addresses from environment variable . Set cron job and run following command:
   
   `rake email_notification:send_email` 
   

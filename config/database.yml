@@ -1,15 +1,13 @@
-# MySQL. Versions 5.0 and up are supported.
-#
-# Be sure to use new-style password hashing:
-#   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
+# Mysql
 #
 default: &default
   adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  host: localhost
-  username:
-  password:
+  port: 3306
+  host: <%= ENV['DBHOST'] %>
+  username: <%= ENV['DBUSER'] %>
+  password: <%= ENV['DBPASSWD'] %>
 
 
 development:
@@ -24,9 +22,5 @@ test:
   database: jobstatus_test
 
 production:
-  Host:
-  port:
-  pool:
-  username:
-  password:
+  <<: *default
   database: jobstatus_production
