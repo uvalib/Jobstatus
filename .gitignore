@@ -26,4 +26,4 @@
 .idea
 
 # Ignore database.yml file
-/config/database.yml
+# /config/database.yml
