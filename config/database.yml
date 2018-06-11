@@ -4,17 +4,14 @@ default: &default
   adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  host: localhost
-  username: root
-  password:
+  port: 3306
+  host: <%= ENV['DBHOST'] %>
+  username: <%= ENV['DBUSER'] %>
+  password: <%= ENV['DBPASSWD'] %>
 
 
 development:
   <<: *default
-  host: <%= ENV['DBHOST'] %>
-  port: 3306
-  username: <%= ENV['DBUSER'] %>
-  password: <%= ENV['DBPASSWD'] %>
   database: jobstatus_development
 
 # Warning: The database defined as "test" will be erased and
