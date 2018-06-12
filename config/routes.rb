@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   # health check and version endpoints
   resources :healthcheck, only: [ :index ]
   resources :version, only: [ :index ]
+  post 'api', to: 'jobs#create'
 
 end
