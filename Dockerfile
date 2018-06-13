@@ -10,6 +10,7 @@ WORKDIR /usr/src/app
 COPY Gemfile* ./
 RUN gem install --no-document nokogiri -- --use-system-libraries
 RUN bundle install
+RUN whenever --update-crontab
 COPY . .
 
 EXPOSE 3000
