@@ -20,14 +20,11 @@ class HealthcheckController < ApplicationController
     attr_accessor :repository
     attr_accessor :mysql
     attr_accessor :env_password
-    attr_accessor :env_dbhost
-    attr_accessor :env_dbuser
-    attr_accessor :env_dbpasswd
     attr_accessor :env_sender
     attr_accessor :env_receiver
 
     def is_healthy?
-      mysql.healthy && env_password.healthy && env_dbhost.healthy && env_dbuser.healthy && env_dbpasswd.healthy && env_sender.healthy && env_receiver.healthy
+      mysql.healthy && env_password.healthy && env_sender.healthy && env_receiver.healthy
     end
   end
 
@@ -53,15 +50,6 @@ class HealthcheckController < ApplicationController
     msg = !ENV['password'].nil? ? '' : 'Environment variable password is not defined.'
     status[:env_password] = Health.new(!ENV['password'].nil?, msg)
 
-    msg = !ENV['DBHOST'].nil? ? '' : 'Environment variable DBHOST is not defined.'
-    status[:env_dbhost] = Health.new(!ENV['DBHOST'].nil?, msg)
-
-    msg = !ENV['DBUSER'].nil? ? '' : 'Environment variable DBUSER is not defined.'
-    status[:env_dbuser] = Health.new(!ENV['DBUSER'].nil?, msg)
-
-    msg = !ENV['DBPASSWD'].nil? ? '' : 'Environment variable DBPASSWD is not defined.'
-    status[:env_dbpasswd] = Health.new(!ENV['DBPASSWD'].nil?, msg)
-
     msg = !ENV['SENDER'].nil? ? '' : 'Environment variable SENDER is not defined.'
     status[:env_sender] = Health.new(!ENV['SENDER'].nil?, msg)
 
@@ -75,9 +63,6 @@ class HealthcheckController < ApplicationController
     r = HealthCheckResponse.new
     r.mysql = health_status[ :mysql ]
     r.env_password = health_status[ :env_password ]
-    r.env_dbhost = health_status[ :env_dbhost ]
-    r.env_dbuser = health_status[ :env_dbuser ]
-    r.env_dbpasswd = health_status[ :env_dbpasswd ]
     r.env_sender = health_status[ :env_sender ]
     r.env_receiver = health_status[ :env_receiver ]
     return( r )
