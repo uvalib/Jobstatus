@@ -47,14 +47,14 @@ class HealthcheckController < ApplicationController
 
     # check environment variables
     msg = ''
-    msg = !ENV['env_password'].nil? ? '' : 'Environment variable password is not defined.'
-    status[:env_password] = Health.new(!ENV['env_password'].nil?, msg)
+    msg = !ENV['password'].empty? ? '' : 'Environment variable password is not defined.'
+    status[:env_password] = Health.new(!ENV['password'].empty?, msg)
 
-    msg = !ENV['SENDER'].nil? ? '' : 'Environment variable SENDER is not defined.'
-    status[:env_sender] = Health.new(!ENV['SENDER'].nil?, msg)
+    msg = !ENV['SENDER'].empty? ? '' : 'Environment variable SENDER is not defined.'
+    status[:env_sender] = Health.new(!ENV['SENDER'].empty?, msg)
 
-    msg = !ENV['RECEIVER'].nil? ? '' : 'Environment variable RECEIVER is not defined.'
-    status[:env_receiver] = Health.new(!ENV['RECEIVER'].nil?, msg)
+    msg = !ENV['RECEIVER'].empty? ? '' : 'Environment variable RECEIVER is not defined.'
+    status[:env_receiver] = Health.new(!ENV['RECEIVER'].empty?, msg)
 
     return( status )
   end
