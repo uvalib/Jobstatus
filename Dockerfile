@@ -1,7 +1,7 @@
 FROM ruby:2.5-alpine3.7
 
 RUN apk upgrade --update \
-    && apk add libxml2 libxml2-dev libxml2-utils libxslt libxslt-dev gcc g++ make mysql-dev mysql-client nodejs tzdata
+    && apk add libxml2 libxml2-dev libxml2-utils libxslt libxslt-dev gcc g++ make mysql-dev mysql-client nodejs tzdata crond
 
 # export port
 EXPOSE 3000
@@ -13,5 +13,5 @@ RUN bundle install
 COPY . .
 RUN whenever --update-crontab
 
-CMD ["/usr/sbin/crond" "-f"]
+CMD ['crond' '-f']
 
