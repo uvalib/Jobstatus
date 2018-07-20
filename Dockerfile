@@ -13,5 +13,5 @@ RUN bundle install
 COPY . .
 RUN whenever --update-crontab
 
-CMD ['crond' '-f']
+CMD ["/usr/sbin/crond", "-f"]
 
