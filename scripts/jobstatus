@@ -116,6 +116,9 @@ function jobstatus_set_message ()
 {
 	local message="$1"
 
+	# jobstatus doesn't seem to like multi-line messages
+	message="$(echo "$message" | tr '\n' ' ')"
+
 	JOBSTATUS_MESSAGE="$message"
 }
 
