@@ -1,7 +1,7 @@
 body {
   background-color: #fff;
   color: #333;
-  margin: 0px;
+  margin: 33px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -11,7 +11,6 @@ p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  margin: 5px;
 }
 
 pre {
@@ -22,7 +21,6 @@ pre {
 
 a {
   color: #000;
-  margin-left: 5px;
 
   &:visited {
     color: #666;
@@ -45,7 +43,6 @@ td {
 div {
   &.field, &.actions {
     margin-bottom: 10px;
-    margin-left: 10px;
   }
 }
 
