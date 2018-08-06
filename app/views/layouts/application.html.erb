@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <%= render partial: 'shared/header' %>
   <head>
     <title>Jobstatus</title>
     <%= csrf_meta_tags %>
@@ -11,4 +12,5 @@
   <body>
     <%= yield %>
   </body>
+  <%= render partial: 'shared/footer' %>
 </html>
