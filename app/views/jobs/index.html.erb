@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <% @groups.count.each do |k,v|%>
-          <tr class="<%= Job.is_status_good(k) ? 'all_success' : 'not_success' %> ">
+          <tr class="<%= Job.is_status_good(k) ? 'table-success' : 'table-danger' %> ">
             <td><%= Job.is_status_good(k) ? "&#10003;".html_safe : "&#10008;".html_safe  %></td>
             <td><%= link_to k, group_jobs_path(name: k) %></a></td>
             <td><%= v %></td>

@@ -21,7 +21,7 @@
 
 
   <% @group_jobs.each do |job| %>
-      <tr class="<%=job.status=='success' ? 'all_success' : 'not_success' %> ">
+      <tr class="<%=job.status=='success' ? 'table-success' : 'table-danger' %> ">
         <td><%= job.name %></td>
         <td><%= job.status %></td>
         <td><%= distance_of_time_in_words(job.duration,0) %></td>
