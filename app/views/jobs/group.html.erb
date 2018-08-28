@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
 
-<table>
+<table class="table table-bordered">
   <thead>
   <tr>
     <th>Name</th>
@@ -19,6 +20,9 @@
     <p class="not_success"><b><%= @group_jobs.first["name"] %></b> is overdue.</p>
   <% end %>
 
+  <div class="pagination justify-content-end">
+  <%= will_paginate @group_jobs, renderer: BootstrapPagination::Rails %>
+  </div>
 
   <% @group_jobs.each do |job| %>
       <tr class="<%=job.status=='success' ? 'table-success' : 'table-danger' %> ">
@@ -33,3 +37,4 @@
   <% end %>
   </tbody>
 </table>
+</div>

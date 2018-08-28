@@ -1,25 +1,30 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
 
-<table>
+<table class="table table-bordered">
   <thead>
   <tr>
     <th> Status</th>
     <th> Job Name</th>
     <th> Counts </th>
-    <th colspan="3"></th>
   </tr>
   </thead>
   <tbody>
     <% @groups.count.each do |k,v|%>
           <tr class="<%= Job.is_status_good(k) ? 'table-success' : 'table-danger' %> ">
-            <td><%= Job.is_status_good(k) ? "&#10003;".html_safe : "&#10008;".html_safe  %></td>
-            <td><%= link_to k, group_jobs_path(name: k) %></a></td>
-            <td><%= v %></td>
+            <% if Job.is_status_good(k) %>
+                <td class=".col-md-3"><div class="badge badge-pill badge-success" data-toggle="tooltip" data-placement="top" title="<%=Job.error_message(k)%>">Success</div>
+            <% else %>
+                <td class=".col-md-3"><div class="badge badge-pill badge-danger" data-toggle="tooltip" data-placement="top" title="<%=Job.error_message(k)%>">Failed</div>
+            <% end %>
+            </td>
+            <td class=".col-md-6"><%= link_to k, group_jobs_path(name: k) %></a></td>
+            <td class=".col-md-3"><%= v %></td>
           </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+</div>
 
