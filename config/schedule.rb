@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.day, at: '5:05pm' do
+every 1.day, at: '9:10pm' do
   rake "email_notification:send_email"
 end
