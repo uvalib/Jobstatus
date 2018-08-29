@@ -10,7 +10,6 @@
     <th>Message</th>
     <th>Date</th>
     <th>Frequency</th>
-    <th colspan="3"></th>
   </tr>
   </thead>
 
@@ -20,10 +19,6 @@
     <p class="not_success"><b><%= @group_jobs.first["name"] %></b> is overdue.</p>
   <% end %>
 
-  <div class="pagination justify-content-end">
-  <%= will_paginate @group_jobs, renderer: BootstrapPagination::Rails %>
-  </div>
-
   <% @group_jobs.each do |job| %>
       <tr class="<%=job.status=='success' ? 'table-success' : 'table-danger' %> ">
         <td><%= job.name %></td>
@@ -32,9 +27,12 @@
         <td><%= job.message %></td>
         <td><%= job.created_at.strftime("%Y-%m-%d") %></td>
         <td><%= job.frequency %></td>
-        <td><%= link_to 'Show', job %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
+  <div class="pagination justify-content-end">
+    <%= will_paginate @group_jobs, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
 </div>
+

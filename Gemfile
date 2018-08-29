@@ -33,7 +33,7 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 
 gem 'will_paginate', '~> 3.1.0'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap4'
 
 # Use gem whenerver for writing and deploying cron jobs
 gem 'whenever', require: false
