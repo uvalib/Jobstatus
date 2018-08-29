@@ -18,6 +18,8 @@
 # 3. Set job status fields:
 #      * jobstatus_set_name <name> -- your name for the job
 #      * jobstatus_set_duration <duration> -- how long the job took, in seconds
+#          (alternatively, you can have duration set automatically by calling
+#           jobstatus_start_timer followed by jobstatus_stop_timer)
 #      * jobstatus_set_frequency <frequency> -- how often the job runs, in hours
 #      * jobstatus_set_message <message> -- free-form message for this instance of the job
 #      * jobstatus_set_status_success / jobstatus_set_status_failed -- final status of job
@@ -105,6 +107,25 @@ function jobstatus_set_duration ()
 	JOBSTATUS_DURATION="$duration"
 }
 
+function jobstatus_start_timer ()
+{
+	JOBSTATUS_TIMER_START="$(date +%s)"
+}
+
+function jobstatus_stop_timer ()
+{
+	JOBSTATUS_TIMER_STOP="$(date +%s)"
+
+	JOBSTATUS_DURATION="0"
+
+	if [ "$JOBSTATUS_TIMER_START" != "" ]; then
+		JOBSTATUS_DURATION="$(expr "$JOBSTATUS_TIMER_STOP" - "$JOBSTATUS_TIMER_START")"
+	fi
+
+	JOBSTATUS_TIMER_START=""
+	JOBSTATUS_TIMER_STOP=""
+}
+
 function jobstatus_set_frequency ()
 {
 	local frequency="$1"
@@ -115,6 +136,9 @@ function jobstatus_set_frequency ()
 function jobstatus_set_message ()
 {
 	local message="$1"
+
+	# jobstatus doesn't seem to like multi-line messages
+	message="$(echo "$message" | tr '\n' ' ')"
 
 	JOBSTATUS_MESSAGE="$message"
 }
