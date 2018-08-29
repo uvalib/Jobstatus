@@ -29,6 +29,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-rails'
+
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'
 
 # Use gem whenerver for writing and deploying cron jobs
 gem 'whenever', require: false

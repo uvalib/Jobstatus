@@ -13,6 +13,18 @@ class Job < ApplicationRecord
      return job_condition
    end
 
+   def self.error_message(k)
+     joblist = Job.where("name= ?", k).order("created_at DESC")
+     if joblist.first["created_at"] + joblist.first["frequency"]*3600 < Time.now
+       message = 'No status reports for over 24 hours!'
+     elsif joblist.first["status"] == "failed"
+       message = 'Recent report is failed'
+     else
+       message = 'Success'
+     end
+     return message
+   end
+
    def self.all_statuses
      all_statuses = Hash.new()
      jobs = Job.select("name").distinct
