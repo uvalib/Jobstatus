@@ -35,6 +35,8 @@ gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 
+gem 'sprockets', '~> 3.7.2'
+
 # Use gem whenerver for writing and deploying cron jobs
 gem 'whenever', require: false
 
