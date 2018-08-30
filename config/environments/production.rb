@@ -91,7 +91,7 @@ Rails.application.configure do
 
 
   config.action_mailer.smtp_settings = {
-      domain:              ENV["SMTP_HOST"]
+      address:              ENV["SMTP_HOST"]
   }
 
 end
