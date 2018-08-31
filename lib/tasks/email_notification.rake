@@ -5,7 +5,7 @@ namespace :email_notification do
       puts "Sending emails to #{ENV['RECEIVER']}"
       UserMailer.with(user: ENV['RECEIVER']).jobstatus_email.deliver_now
     else
-      puts "All jobs are ok."
+      puts "All jobs are ok. Base Url=#{ENV['BASE_URL']}"
     end
   end
 end
