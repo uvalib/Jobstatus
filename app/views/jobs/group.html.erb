@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
 
+  <% if @group_jobs.current_page == 1 && @group_jobs.order("created_at DESC").first["created_at"] + @group_jobs.order("created_at DESC").first["frequency"]*3600 < Time.now %>
+      <p><span class="badge badge-pill badge-danger">ALERT ! </span><span class="not_success"><b><%= @group_jobs.first["name"] %></b> is overdue.</span></p>
+  <% end %>
+
 <table class="table table-bordered">
   <thead>
   <tr>
@@ -14,11 +18,6 @@
   </thead>
 
   <tbody>
-
-  <% unless @group_jobs.order("created_at DESC").first["created_at"] + @group_jobs.order("created_at DESC").first["frequency"]*3600 >= Time.now %>
-    <p class="not_success"><b><%= @group_jobs.first["name"] %></b> is overdue.</p>
-  <% end %>
-
   <% @group_jobs.each do |job| %>
       <tr class="<%=job.status=='success' ? 'table-success' : 'table-danger' %> ">
         <td><%= job.name %></td>
@@ -30,7 +29,7 @@
       </tr>
   <% end %>
   </tbody>
-</table>
+  </table>
   <div class="pagination justify-content-end">
     <%= will_paginate @group_jobs, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
   </div>
